@@ -63,7 +63,6 @@ export default function PackagesPage() {
 
   return (
     <div className="bg-[#FFF8F3] py-12 px-6 sm:px-10 lg:px-20 min-h-screen">
-      {/* Hero Section */}
       <Link
         href="/services"
         className="inline-block mb-8 text-[#C49A6C] hover:underline"
@@ -75,7 +74,7 @@ export default function PackagesPage() {
           Our Combo Packages
         </h1>
         <p className="text-[#5C3B1E] text-lg mb-6">
-          From birthdays to weddings and burials, we've created affordable,
+          From birthdays to weddings and burials, we have created affordable,
           beautiful bundles so you can relax and enjoy your event.
         </p>
         <a
