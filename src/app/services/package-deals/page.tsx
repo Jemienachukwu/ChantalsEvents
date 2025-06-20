@@ -1,5 +1,8 @@
+"use client";
 import Nav from "@/app/components/Nav";
+import Lottie from "lottie-react";
 import Link from "next/link";
+import gif from "../../components/lottie/Animation - 1750285171861.json";
 
 export default function PackagesPage() {
   const combos = [
@@ -80,7 +83,14 @@ export default function PackagesPage() {
         >
           ← Back to Services
         </Link>
-        <div className="max-w-3xl  text-left mb-16">
+        <div className="absolute top-[5%] left-[5%] w-[250px] opacity-40 z-0 pointer-events-none">
+          <Lottie animationData={gif} loop={true} />
+        </div>
+
+        <div className="absolute top-[5%] right-[5%] w-[250px] opacity-40 z-0 pointer-events-none">
+          <Lottie animationData={gif} loop={true} />
+        </div>
+        <div className="w-full text-center bg-[#FFEFE3] py-12 mb-16  rounded-2xl ">
           <h1 className="text-4xl font-bold text-[#3E2F21] mb-4">
             Our Combo Packages
           </h1>

@@ -15,17 +15,6 @@ const Hero = () => {
           <Lottie animationData={gif} loop={true} />
         </div>
 
-        {/* Optional Background Shape */}
-        {/* <div
-        className="absolute -top-20 left-1/2 w-[500px] h-[500px] rounded-full opacity-10 transform -translate-x-1/2 z-0"
-        style={{
-          backgroundColor: "#E85D75",
-          backgroundImage:
-            "linear-gradient(white 3px, transparent 3px), linear-gradient(90deg, white 3px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      /> */}
-
         <div className="max-w-5xl mx-auto text-center z-10">
           {/* Small tagline */}
           <div className="text-sm uppercase tracking-wider font-semibold text-[#f94200] mb-3">
