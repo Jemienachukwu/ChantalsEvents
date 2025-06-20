@@ -119,16 +119,16 @@ export default function BookingComboPage() {
   const [eventDate, setEventDate] = useState("");
   const [location, setLocation] = useState("");
   const [notes, setNotes] = useState("");
-  const [selectPackage, setSelectPackage] = useState(
-    selectedPackage?.name ?? ""
-  );
-  const [availableAdditions, setAvailableAdditions] = useState<string[]>([]);
 
+  // Default to first package if none selected
+  const selectPackage = selectedPackage?.name ?? "";
+
+  const [availableAdditions, setAvailableAdditions] = useState<string[]>([]);
   // OPTIONAL: Update selectedItems when manually choosing another package
   useEffect(() => {
     const matched = packageDeals.find((pkg) => pkg.name === selectPackage);
     if (matched) setSelectedItems([...matched.items]);
-  }, [selectPackage]);
+  }, [selectPackage, selectedPackage]);
 
   // Reset state when package changes
   useEffect(() => {
@@ -136,23 +136,8 @@ export default function BookingComboPage() {
       setSelectedItems([...selectedPackage.items]);
       setAvailableAdditions([...selectedPackage.optionalAdditions]);
     }
-  }, [packageId, setSelectPackage]);
+  }, [packageId, selectedPackage]);
 
-  // // Handle new item addition
-  //   const handleAddItem = () => {
-  //     const trimmed = newItem.trim();
-  //     if (trimmed && !selectedItems.includes(trimmed)) {
-  //       setSelectedItems([...selectedItems, trimmed]);
-  //       setNewItem("");
-  //     }
-  //   };
-
-  //     // Handle item removal
-  //   const handleItemRemove = (index: number) => {
-  //     const updated = [...selectedItems];
-  //     updated.splice(index, 1);
-  //     setSelectedItems(updated);
-  //   };
   const handleItemRemove = (item: string) => {
     setSelectedItems((prev) => prev.filter((i) => i !== item));
     setAvailableAdditions((prev) => [...prev, item]);
@@ -217,7 +202,7 @@ export default function BookingComboPage() {
             Book “{selectedPackage.name}”
           </h1>
           <p className="text-[#5C3B1E] mb-6">
-            Customize your package by adding or removing items. We’ll make it
+            Customize your package by adding or removing items. We will make it
             just right for your event.
           </p>
 
@@ -231,7 +216,7 @@ export default function BookingComboPage() {
                 id="combo-select"
                 value={selectedPackage.id}
                 onChange={handlePackageChange}
-                className="w-full border border-[#C49A6C] rounded-lg p-3 text-[#3E2F21]"
+                className="w-full border border-[#C49A6C] rounded-lg p-3 text-[#3E2F21] cursor-pointer"
               >
                 {packageDeals.map((pkg) => (
                   <option key={pkg.id} value={pkg.id}>
@@ -254,7 +239,7 @@ export default function BookingComboPage() {
                   >
                     {item}
                     <button
-                      className="ml-2 text-xs text-red-600 hover:underline"
+                      className="ml-2 text-xs text-red-600 hover:underline cursor-pointer"
                       onClick={() => handleItemRemove(item)}
                       type="button"
                     >
@@ -272,7 +257,7 @@ export default function BookingComboPage() {
               <select
                 id="additions-select"
                 onChange={handleAddItem}
-                className="w-full border border-[#C49A6C] rounded-lg p-3 mb-6 text-[#3E2F21]"
+                className="w-full border border-[#C49A6C] rounded-lg p-3 mb-6 text-[#3E2F21] cursor-pointer"
                 defaultValue=""
               >
                 <option value="" disabled>
@@ -301,7 +286,7 @@ export default function BookingComboPage() {
                       setNewItem("");
                     }
                   }}
-                  className="bg-[#C49A6C] text-white px-4 py-2 rounded-lg text-sm font-semibold"
+                  className="bg-[#C49A6C] text-white px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer"
                 >
                   Add
                 </button>
@@ -368,7 +353,7 @@ export default function BookingComboPage() {
             <div className="pt-4 text-center">
               <button
                 type="submit"
-                className="bg-[#C49A6C] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#b68654] transition"
+                className="bg-[#C49A6C] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#b68654] transition cursor-pointer"
               >
                 Submit Booking
               </button>

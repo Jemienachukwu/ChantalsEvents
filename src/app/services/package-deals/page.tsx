@@ -125,9 +125,9 @@ export default function PackagesPage() {
               </a> */}
                 <Link
                   href={`/services/booking-combo?packageId=${combo.id}`}
-                  className="block text-center bg-[#C49A6C] text-white py-2 rounded-full font-semibold hover:bg-[#b68654] transition"
+                  className="block text-center bg-[#C49A6C] text-white py-2 rounded-full font-semibold hover:bg-[#b68654] transition cursor-pointer"
                 >
-                  <button>Book Now</button>
+                  Book Now
                 </Link>
               </div>
             </div>
