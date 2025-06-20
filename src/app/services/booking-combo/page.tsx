@@ -136,7 +136,7 @@ export default function BookingComboPage() {
       setSelectedItems([...selectedPackage.items]);
       setAvailableAdditions([...selectedPackage.optionalAdditions]);
     }
-  }, [packageId]);
+  }, [packageId, setSelectPackage]);
 
   // // Handle new item addition
   //   const handleAddItem = () => {
