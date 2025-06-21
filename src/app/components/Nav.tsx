@@ -27,10 +27,10 @@ const Nav = () => {
               className="cursor-pointer flex items-center gap-1"
             >
               <button
-                className={`transition border-b-2 border-b-transparent hover:border-b-[#f94200] cursor-pointer
+                className={`transition border-b-2 border-b-transparent hover:border-b-[#E85D75] cursor-pointer
                   ${
                     pathname === item.link
-                      ? "border-b-[#f94200] font-bold text-[#f94200]"
+                      ? "border-b-[#E85D75] font-bold text-[#E85D75]"
                       : ""
                   }
                 `}
@@ -42,15 +42,17 @@ const Nav = () => {
         </div>
         <div className="flex-1 flex justify-end gap-2 items-cente ">
           <Link
-            href="/login"
-            className="text-[#f94200] font-medium hover:underline px-3 py-1 rounded transition"
+            href="/sign-in"
+            className="text-[#E85D75] font-medium hover:underline px-3 py-1 rounded transition "
           >
             Login
           </Link>
-          <Link href="/signup">
-            <button className="bg-[#f94200] text-white font-semibold px-4 py-1.5 rounded-full shadow hover:bg-[#d63700] transition">
-              Signup
-            </button>
+
+          <Link
+            href="/sign-up"
+            className="bg-[#E85D75] text-white font-semibold px-4 py-1.5 rounded-full shadow hover:bg-[#E85D75] transition"
+          >
+            Signup
           </Link>
         </div>
       </div>
@@ -90,7 +92,7 @@ const Nav = () => {
                 href={item.link}
                 className={`py-2 px-2 rounded transition ${
                   pathname === item.link
-                    ? "bg-[#f94200] text-white font-bold"
+                    ? "bg-[#c4986c] text-white font-bold"
                     : "hover:bg-gray-100"
                 }`}
                 onClick={() => setSidebarOpen(false)}
@@ -100,15 +102,16 @@ const Nav = () => {
             ))}
             <div className="mt-4 flex flex-col gap-2">
               <Link
-                href="/login"
-                className="text-[#f94200] font-medium hover:underline px-3 py-1 rounded transition"
+                href="/sign-in"
+                className="text-[#E85D75] font-medium hover:underline px-3 py-1 rounded transition"
               >
                 Login
               </Link>
-              <Link href="/signup">
-                <button className="bg-[#f94200] text-white font-semibold px-4 py-1.5 rounded-full shadow hover:bg-[#d63700] transition w-full">
-                  Signup
-                </button>
+              <Link
+                href="/sign-up"
+                className="bg-[#c4986c] text-white font-semibold px-4 py-1.5 rounded-full shadow hover:bg-[#E85D75] transition w-full"
+              >
+                Signup
               </Link>
             </div>
           </div>
