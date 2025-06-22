@@ -49,7 +49,7 @@ export default function page() {
             🍲 Book Catering Service
           </h1>
           <p className="text-[#5C3B1E] mb-6">
-            Choose your event type, customize your menu, and we'll handle the
+            Choose your event type, customize your menu, and we will handle the
             rest.
           </p>
           <form className="grid gap-6">

@@ -39,7 +39,7 @@ export default function BookEvent() {
   };
 
   const calculateTotal = () => {
-    let base = 10000; // base booking fee
+    const base = 10000; // base booking fee
     const serviceCost = selectedServices.reduce((acc, service) => {
       const s = optionalServices.find((s) => s.name === service);
       return acc + (s ? s.price : 0);
@@ -77,7 +77,7 @@ export default function BookEvent() {
             🎉 Book an Event
           </h1>
           <p className="text-[#5C3B1E] mb-6">
-            Choose your event type, customize what you need, and we'll handle
+            Choose your event type, customize what you need, and we will handle
             the rest.
           </p>
 

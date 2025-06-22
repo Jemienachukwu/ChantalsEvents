@@ -48,7 +48,10 @@ export default function BookingHub() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {categories.map((cat, i) => (
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all border">
+              <div
+                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all border"
+                key={i}
+              >
                 <Link href={cat.href} className="block">
                   <div className="text-4xl mb-3">{cat.emoji}</div>
                   <h2 className="text-xl font-semibold text-[#222] mb-1">
