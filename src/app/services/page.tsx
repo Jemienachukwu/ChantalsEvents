@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Nav from "../components/Nav";
-import ServicesPage from "../components/ServiceTest";
+import ServicesPage from "../components/servicesMain";
 
 const page = () => {
   return (

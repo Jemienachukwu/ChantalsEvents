@@ -36,35 +36,6 @@ export default function ServicesPage() {
 
   return (
     <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
-      {/* Top 4 CTA Buttons */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-        <a
-          href="https://calendly.com/your-link"
-          target="_blank"
-          className="bg-[#C49A6C] text-white py-4 px-6 rounded-xl text-center font-semibold shadow hover:bg-[#b98d56]"
-        >
-          📅 Book an Event
-        </a>
-        <a
-          href="/cakes"
-          className="bg-white border-2 border-[#C49A6C] text-[#C49A6C] py-4 px-6 rounded-xl text-center font-semibold hover:bg-[#fff3e5]"
-        >
-          🎂 Order Cakes & Pastries
-        </a>
-        <a
-          href="/food"
-          className="bg-white border-2 border-[#C49A6C] text-[#C49A6C] py-4 px-6 rounded-xl text-center font-semibold hover:bg-[#fff3e5]"
-        >
-          🍛 Order Food packs/trays
-        </a>
-        <a
-          href="/contact#rentals"
-          className="bg-white border-2 border-[#C49A6C] text-[#C49A6C] py-4 px-6 rounded-xl text-center font-semibold hover:bg-[#fff3e5]"
-        >
-          🪑 Rentals & Equipment
-        </a>
-      </div>
-
       {/* Combo Deals Banner */}
       <div className="bg-[#FFEFE3] p-8 rounded-2xl mb-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
         <div>
