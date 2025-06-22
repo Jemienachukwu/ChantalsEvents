@@ -30,9 +30,9 @@ export default function BookCake() {
   const [referenceImage, setReferenceImage] = useState<File | null>(null);
   const [imageLink, setImageLink] = useState("");
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setReferenceImage(e.target.files?.[0] || null);
-  };
+  //   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     setReferenceImage(e.target.files?.[0] || null);
+  //   };
 
   const calculateTotal = () => {
     const selectedSize = cakeSizes.find((s) => s.name === size);
@@ -71,7 +71,7 @@ export default function BookCake() {
             🎂 Book a Custom Cake
           </h1>
           <p className="text-[#5C3B1E] mb-6">
-            Choose your cake preferences and we'll bake something perfect for
+            Choose your cake preferences and we will bake something perfect for
             your celebration.
           </p>
 
