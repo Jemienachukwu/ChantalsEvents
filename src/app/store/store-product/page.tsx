@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ComboBookingClient from "./comboBookingClient";
+import ProductDetails from "./productDetails";
 
 export default function BookingComboPage() {
   return (
@@ -8,7 +8,7 @@ export default function BookingComboPage() {
         <div className="p-10 text-center">Loading booking combo...</div>
       }
     >
-      <ComboBookingClient />
+      <ProductDetails />
     </Suspense>
   );
 }

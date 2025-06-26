@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
   { name: "Booking", href: "/bookings", hasDropdown: true },
-  { name: "Bakery", href: "/bakery" },
+  { name: "Store", href: "/store" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -26,10 +26,10 @@ export default function NavBar() {
   const [showBookingDropdown, setShowBookingDropdown] = useState(false);
 
   return (
-    <nav className="w-full bg-white px-5 md:px-20 py-2 relative justify-center items-center">
+    <nav className="w-full bg-white px-5 md:px-20 py-2 relative justify-center items-center z-50">
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center justify-between w-full">
-        <div className="text-xl font-bold text-[#E85D75]">Logo</div>
+        <div className="text-xl font-bold text-[#E85D75]">Chantals</div>
 
         {/* nav links */}
         <div className="flex gap-8 absolute left-1/2 transform -translate-x-1/2 ">

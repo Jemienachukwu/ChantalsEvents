@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import Nav from "@/app/components/Nav";
+import NavBar from "@/app/components/Nav";
 
 // Sample package data
 const packageDeals = [
@@ -188,7 +188,7 @@ export default function ComboBookingClient() {
 
   return (
     <>
-      <Nav />
+      <NavBar />
       <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
         <Link
           href="/services/package-deals"

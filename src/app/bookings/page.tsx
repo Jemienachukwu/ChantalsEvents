@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Nav from "../components/Nav";
+import NavBar from "../components/Nav";
 
 const categories = [
   {
@@ -33,7 +33,7 @@ const categories = [
 export default function BookingHub() {
   return (
     <>
-      <Nav />
+      <NavBar />
       <main className="relative bg-[#FAF8F5] min-h-screen">
         <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-[#fff0e6] to-[#ffe6ec] rounded-b-[50%] z-0"></div>
 

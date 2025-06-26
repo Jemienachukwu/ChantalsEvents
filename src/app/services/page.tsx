@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import Nav from "../components/Nav";
+import NavBar from "../components/Nav";
 import ServicesPage from "../components/servicesMain";
 
 const page = () => {
   return (
     <div>
-      <Nav />
+      <NavBar />
       <ServicesPage />
     </div>
   );

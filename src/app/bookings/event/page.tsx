@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Nav from "@/app/components/Nav";
+import NavBar from "@/app/components/Nav";
 
 const predefinedEvents = [
   "Birthday",
@@ -64,7 +64,7 @@ export default function BookEvent() {
 
   return (
     <>
-      <Nav />
+      <NavBar />
       <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
         <button
           className="inline-block mb-8 text-[#C49A6C] hover:underline cursor-pointer"

@@ -1,5 +1,5 @@
 "use client";
-import Nav from "@/app/components/Nav";
+import NavBar from "@/app/components/Nav";
 import Lottie from "lottie-react";
 import Link from "next/link";
 import gif from "../../components/lottie/Animation - 1750285171861.json";
@@ -75,7 +75,7 @@ export default function PackagesPage() {
 
   return (
     <>
-      <Nav />
+      <NavBar />
       <div className="bg-[#FFF8F3] py-12 px-6 sm:px-10 lg:px-20 min-h-screen">
         <Link
           href="/services"
