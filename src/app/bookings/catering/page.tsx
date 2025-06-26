@@ -39,7 +39,7 @@ export default function BookCatering() {
       <Nav />
       <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
         <button
-          className="inline-block mb-8 text-[#C49A6C] hover:underline"
+          className="inline-block mb-8 text-[#C49A6C] hover:underline cursor-pointer"
           onClick={() => router.back()}
         >
           ← go back
