@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import NavBar from "../components/Nav";
 // import image from "../assets/marketplace.jpg";
 import image1 from "../components/assets/marketplace.jpg";

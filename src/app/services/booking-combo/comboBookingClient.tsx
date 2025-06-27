@@ -174,7 +174,7 @@ export default function ComboBookingClient() {
     if (selectedPackage) {
       setSelectedItems([...selectedPackage.items]);
     }
-  }, [packageId]);
+  }, [packageId, selectedPackage]);
   const handlePackageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newId = e.target.value;
     router.push(`/services/booking-combo?packageId=${newId}`);
