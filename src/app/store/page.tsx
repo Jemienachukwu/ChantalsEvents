@@ -1,6 +1,5 @@
 "use client";
 import NavBar from "../components/Nav";
-// import image from "../assets/marketplace.jpg";
 import image1 from "../components/assets/marketplace.jpg";
 
 import Image from "next/image";
@@ -8,6 +7,7 @@ import Link from "next/link";
 const products = [
   {
     id: "1",
+    category: "Pastries",
     name: "Chocolate Cupcake",
     price: 2500,
     image: image1,
@@ -16,6 +16,7 @@ const products = [
   },
   {
     id: "2",
+    category: "Pastries",
     name: "Vanilla Cake Slice",
     price: 3000,
     image: image1,
@@ -23,6 +24,7 @@ const products = [
   },
   {
     id: "3",
+    category: "Pastries",
     name: "Meat Pie (Box of 4)",
     price: 4000,
     image: image1,
@@ -30,6 +32,7 @@ const products = [
   },
   {
     id: "4",
+    category: "Pastries",
     name: "Chin Chin (500g)",
     price: 2000,
     image: image1,
