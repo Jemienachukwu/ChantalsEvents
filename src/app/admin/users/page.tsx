@@ -64,13 +64,13 @@ export default function AdminUsers() {
           ← go back
         </button>
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-extrabold text-[#3E2F21] mb-10 text-center">
-            👥 Registered Users
+          <h1 className="text-4xl font-extrabold text-[#3E2F21] mb-10">
+            Registered Users
           </h1>
 
-          <div className="overflow-x-auto rounded-xl shadow-md border border-[#EBD9BE] bg-white">
+          <div className="overflow-x-auto rounded-sm shadow-md border border-[#EBD9BE] bg-white">
             <table className="min-w-full text-sm">
-              <thead className="bg-[#C49A6C] text-white">
+              <thead className="bg-[#000] text-white">
                 <tr>
                   <th className="text-left px-4 py-3">Name</th>
                   <th className="text-left px-4 py-3">Email</th>
@@ -109,7 +109,7 @@ export default function AdminUsers() {
                     <td className="px-4 py-3">
                       <button
                         onClick={() => toggleStatus(user.id)}
-                        className={`px-4 py-1 rounded-full text-xs font-semibold ${
+                        className={`px-4 py-1 rounded-full text-xs font-semibold cursor-pointer ${
                           user.status === "Active"
                             ? "bg-red-200 text-red-700 hover:bg-red-300"
                             : "bg-green-200 text-green-700 hover:bg-green-300"

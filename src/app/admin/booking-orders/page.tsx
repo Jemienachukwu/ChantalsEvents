@@ -50,8 +50,8 @@ export default function AdminBookingOrders() {
           ← go back
         </button>
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-extrabold text-[#3E2F21] mb-10 text-center">
-            🗂️ Booking Orders
+          <h1 className="text-4xl font-extrabold text-[#3E2F21] mb-10 ">
+            Booking Orders
           </h1>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">

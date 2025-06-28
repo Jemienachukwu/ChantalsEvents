@@ -48,7 +48,6 @@ const ITEMS_PER_PAGE = 6;
 export default function AdminStoreProducts() {
   const router = useRouter();
   const [products, setProducts] = useState(existingProducts);
-  const [showForm, setShowForm] = useState(false);
   const [editProduct, setEditProduct] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -74,11 +73,6 @@ export default function AdminStoreProducts() {
     ingredients: string[]; // <-- NEW
   };
 
-  const openForm = (product: Product | null = null) => {
-    setEditProduct(product);
-    setShowForm(true);
-  };
-
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
@@ -97,7 +91,7 @@ export default function AdminStoreProducts() {
       price: parseFloat(data.price as string),
       inStock: data.inStock === "on",
       description: data.description as string,
-      ingredients: ingredientsArray, // <-- NEW
+      ingredients: ingredientsArray,
     };
 
     const updatedList = editProduct
@@ -105,7 +99,6 @@ export default function AdminStoreProducts() {
       : [newProduct, ...products];
 
     setProducts(updatedList);
-    setShowForm(false);
     setEditProduct(null);
   };
 
@@ -129,22 +122,125 @@ export default function AdminStoreProducts() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-extrabold text-[#3E2F21]">
-              🛍️ Store Products
+              Manage Store Products
             </h1>
-            <button
-              onClick={() => openForm()}
-              className="w-fit px-5 bg-[#000] text-white py-3 rounded-lg font-semibold hover:bg-gray-500 cursor-pointer"
-            >
-              + Add Product
-            </button>
           </div>
+          {/* form */}
+          <form
+            onSubmit={handleFormSubmit}
+            className="bg-white p-6 rounded-2xl border border-[#E7C9A9] shadow-md space-y-4 mb-10"
+          >
+            <h2 className="text-xl font-semibold text-[#3E2F21]">
+              Add New Product
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Product Name */}
+              <div>
+                <label className="block font-medium text-[#3E2F21] mb-1">
+                  Product Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  defaultValue={editProduct?.name || ""}
+                  required
+                  placeholder="e.g. Chocolate Cake"
+                  className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
+                />
+              </div>
+
+              {/* Price */}
+              <div>
+                <label className="block font-medium text-[#3E2F21] mb-1">
+                  Price (₦)
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  defaultValue={editProduct?.price || ""}
+                  required
+                  placeholder="e.g. 2500"
+                  className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
+                />
+              </div>
+
+              {/* Image URL */}
+              <div className="sm:col-span-2">
+                <label className="block font-medium text-[#3E2F21] mb-1">
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  name="image"
+                  defaultValue={editProduct?.image || ""}
+                  placeholder="https://example.com/image.jpg"
+                  className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
+                />
+              </div>
+
+              {/* Description */}
+              <div className="sm:col-span-2">
+                <label className="block font-medium text-[#3E2F21] mb-1">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  defaultValue={editProduct?.description || ""}
+                  placeholder="A soft and moist chocolate cake, perfect for any celebration."
+                  rows={3}
+                  className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
+                />
+              </div>
+
+              {/* Ingredients */}
+              <div className="sm:col-span-2">
+                <label className="block font-medium text-[#3E2F21] mb-1">
+                  Ingredients (comma-separated)
+                </label>
+                <textarea
+                  name="ingredients"
+                  defaultValue={editProduct?.ingredients?.join(", ") || ""}
+                  placeholder="Flour, Sugar, Butter, Cocoa"
+                  rows={2}
+                  className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
+                />
+              </div>
+
+              {/* In Stock Toggle */}
+              <div className="flex items-center gap-2 sm:col-span-2 ">
+                <input
+                  type="checkbox"
+                  name="inStock"
+                  defaultChecked={editProduct?.inStock || false}
+                  className="accent-[#C49A6C] cursor-pointer"
+                />
+                <label className="text-sm text-[#3E2F21] font-medium">
+                  In Stock
+                </label>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className=" text-right">
+              <button
+                type="submit"
+                className="bg-[#000] text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition"
+              >
+                {editProduct ? "Update Product" : "Add Product"}
+              </button>
+            </div>
+          </form>
 
           {/* Product Grid */}
+          <h1 className="text-3xl font-extrabold text-[#3E2F21] mb-8">
+            Store Products
+          </h1>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
             {paginated.map((product) => (
               <div
                 key={product.id}
-                className="bg-white border border-[#E7C9A9] rounded-2xl shadow hover:shadow-md transition p-4"
+                className="bg-white border border-[#E7C9A9] rounded-xl shadow-md overflow-hidden transition p-4"
               >
                 <Image
                   src={product.image}
@@ -180,10 +276,7 @@ export default function AdminStoreProducts() {
                   </span>
 
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => openForm(product)}
-                      className="bg-[#C49A6C] text-white px-4 py-1 rounded-full text-xs hover:bg-[#b68654] cursor-pointer"
-                    >
+                    <button className="bg-[#C49A6C] text-white px-4 py-1 rounded-full text-xs hover:bg-[#b68654] cursor-pointer">
                       Edit
                     </button>
                     <button
@@ -228,122 +321,6 @@ export default function AdminStoreProducts() {
             ))}
           </div>
         </div>
-
-        {/* Modal Form */}
-        {showForm && (
-          <div
-            onClick={() => {
-              setShowForm(false);
-              setEditProduct(null);
-            }}
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center"
-          >
-            <form
-              onClick={(e) => e.stopPropagation()}
-              onSubmit={handleFormSubmit}
-              className="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto space-y-4"
-            >
-              <h2 className="text-xl font-bold text-[#3E2F21]">
-                {editProduct ? "Edit Product" : "Add New Product"}
-              </h2>
-
-              <div>
-                <label className="block text-sm font-semibold text-[#3E2F21] mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  defaultValue={editProduct?.name || ""}
-                  required
-                  className="w-full border-none px-3 py-2 bg-[#F1F1F1]  text-sm"
-                  placeholder="Product Name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-[#3E2F21] mb-1">
-                  Image URL
-                </label>
-                <input
-                  type="text"
-                  name="image"
-                  defaultValue={editProduct?.image || ""}
-                  placeholder="https://example.com/image.jpg"
-                  className="w-full border-none px-3 py-2 bg-[#F1F1F1]  text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-[#3E2F21] mb-1">
-                  Price (₦)
-                </label>
-                <input
-                  type="number"
-                  name="price"
-                  required
-                  defaultValue={editProduct?.price || ""}
-                  className="w-full border-none px-3 py-2 bg-[#F1F1F1]  text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-[#3E2F21] mb-1">
-                  Description
-                </label>
-                <textarea
-                  name="description"
-                  defaultValue={editProduct?.description || ""}
-                  rows={3}
-                  className="w-full border-none px-3 py-2 bg-[#F1F1F1]  text-sm"
-                  placeholder="Product description"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-[#3E2F21] mb-1">
-                  Ingredients (comma-separated)
-                </label>
-                <textarea
-                  name="ingredients"
-                  defaultValue={editProduct?.ingredients?.join(", ") || ""}
-                  placeholder="e.g. Flour, Sugar, Butter"
-                  rows={2}
-                  className="w-full border-none px-3 py-2 bg-[#F1F1F1]  text-sm"
-                />
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="inStock"
-                  defaultChecked={editProduct?.inStock || false}
-                />
-                <label className="text-sm text-[#3E2F21]">In Stock</label>
-              </div>
-
-              <div className="flex justify-between flex-col gap-3 pt-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowForm(false);
-                    setEditProduct(null);
-                  }}
-                  className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-400 cursor-pointer"
-                >
-                  Cancel
-                </button>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#000] text-white py-3 rounded-lg font-semibold hover:bg-gray-500 cursor-pointer"
-                >
-                  {editProduct ? "Update" : "Add"}
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
       </div>
     </>
   );
