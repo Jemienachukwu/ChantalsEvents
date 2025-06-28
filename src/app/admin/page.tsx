@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import NavBar from "../components/Nav";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function AdminDashboard() {
   const router = useRouter();

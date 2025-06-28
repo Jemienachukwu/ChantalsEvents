@@ -47,8 +47,17 @@ const ITEMS_PER_PAGE = 6;
 
 export default function AdminStoreProducts() {
   const router = useRouter();
+  type Product = {
+    id: string;
+    name: string;
+    image: StaticImageData;
+    price: number;
+    inStock: boolean;
+    description: string;
+    ingredients: string[];
+  };
   const [products, setProducts] = useState(existingProducts);
-  const [editProduct, setEditProduct] = useState<any>(null);
+  const [editProduct, setEditProduct] = useState<Product | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.max(1, Math.ceil(products.length / ITEMS_PER_PAGE));
@@ -63,19 +72,11 @@ export default function AdminStoreProducts() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  type Product = {
-    id: string;
-    name: string;
-    image: string | StaticImageData;
-    price: number;
-    inStock: boolean;
-    description: string;
-    ingredients: string[]; // <-- NEW
-  };
-
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target).entries());
+    const data = Object.fromEntries(
+      new FormData(e.target as HTMLFormElement).entries()
+    );
 
     const ingredientsArray = (data.ingredients as string)
       .split(",")
@@ -173,7 +174,11 @@ export default function AdminStoreProducts() {
                 <input
                   type="text"
                   name="image"
-                  defaultValue={editProduct?.image || ""}
+                  defaultValue={
+                    typeof editProduct?.image === "string"
+                      ? editProduct.image
+                      : ""
+                  }
                   placeholder="https://example.com/image.jpg"
                   className="w-full border border-[#D9BFA5] rounded-lg px-4 py-2 text-sm"
                 />
