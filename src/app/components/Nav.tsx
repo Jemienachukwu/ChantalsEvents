@@ -134,6 +134,12 @@ export default function NavBar() {
                 />
               </svg>
             </Link>
+            <Link
+              href="/admin"
+              className="  md:block bg-[#E85D75] text-white px-4 py-2 rounded-full font-semibold hover:bg-[#d94e66] transition"
+            >
+              ADMIN
+            </Link>
           </div>
         ) : (
           <div className="flex-1 flex justify-end gap-2 items-center ">
@@ -283,6 +289,12 @@ export default function NavBar() {
                       fill="#323544"
                     />
                   </svg>
+                </Link>
+                <Link
+                  href="/admin"
+                  className="  md:block bg-[#E85D75] text-white px-4 py-2 rounded-full font-semibold hover:bg-[#d94e66] transition"
+                >
+                  ADMIN
                 </Link>
               </div>
             ) : (

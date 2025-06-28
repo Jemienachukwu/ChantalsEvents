@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
+import NavBar from "../components/Nav";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function AdminDashboard() {
+  const router = useRouter();
   const adminSections = [
     {
       name: "📦 Manage Store Products",
@@ -31,25 +34,34 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-md">
-        <h1 className="text-3xl font-bold text-[#3E2F21] mb-8">
-          Admin Dashboard
-        </h1>
+    <>
+      <NavBar />
+      <div className="bg-[#FFF8F3] min-h-screen py-12 px-6 sm:px-10 lg:px-20">
+        <button
+          className="inline-block mb-8 text-[#C49A6C] hover:underline cursor-pointer"
+          onClick={() => router.back()}
+        >
+          ← go back
+        </button>
+        <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+          <h1 className="text-3xl font-bold text-[#3E2F21] mb-8">
+            Admin Dashboard
+          </h1>
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          {adminSections.map((section) => (
-            <Link
-              key={section.href}
-              href={section.href}
-              className="border border-[#C49A6C] hover:shadow-lg transition p-6 rounded-xl bg-[#FFF3E5] text-[#3E2F21]"
-            >
-              <h2 className="text-lg font-bold mb-2">{section.name}</h2>
-              <p className="text-sm text-[#5C3B1E]">{section.description}</p>
-            </Link>
-          ))}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {adminSections.map((section) => (
+              <Link
+                key={section.href}
+                href={section.href}
+                className="border border-[#C49A6C] hover:shadow-lg transition p-6 rounded-xl bg-[#FFF3E5] text-[#3E2F21]"
+              >
+                <h2 className="text-lg font-bold mb-2">{section.name}</h2>
+                <p className="text-sm text-[#5C3B1E]">{section.description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
