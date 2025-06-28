@@ -72,7 +72,7 @@ export default function CartPage() {
                     key={item.id}
                     className="flex items-center justify-between border-b pb-4"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center flex-col md:flex-row md:items-center gap-4">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -85,7 +85,7 @@ export default function CartPage() {
                         <p className="text-sm text-gray-600 mb-2">
                           {item.description}
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-md text-gray-600">
                           ₦{item.price.toLocaleString()}
                         </p>
                       </div>

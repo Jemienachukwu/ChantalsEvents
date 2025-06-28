@@ -257,7 +257,7 @@ export default function NavBar() {
                   </svg>
                 </Link>
                 <Link
-                  href="/user-dashboard"
+                  href="/cart"
                   className="bg-[#F1F1F1] px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-[#FFEFE3] transition"
                 >
                   <svg
