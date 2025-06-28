@@ -4,6 +4,7 @@ import Image from "next/image";
 import image1 from "../components/assets/marketplace.jpg";
 import NavBar from "../components/Nav";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const initialCart = [
   {
@@ -70,9 +71,9 @@ export default function CartPage() {
                 {cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-center justify-between border-b pb-4"
+                    className="flex items-end justify-between border-b border-gray-200 pb-4"
                   >
-                    <div className="flex items-center flex-col md:flex-row md:items-center gap-4">
+                    <div className="flex flex-col md:flex-row md:items-center gap-4">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -91,7 +92,7 @@ export default function CartPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 h-fit">
                       <input
                         type="number"
                         value={item.quantity}
@@ -140,9 +141,11 @@ export default function CartPage() {
               SUBTOTAL [{totalItems} ITEM{totalItems > 1 ? "S" : ""}]
             </h2>
             <p className="text-2xl font-bold mb-6">₦{total.toLocaleString()}</p>
-            <button className="w-full bg-[#3E2F21] text-white py-3 rounded-lg font-semibold hover:bg-[#2c241b] cursor-pointer">
-              PROCEED TO CHECKOUT
-            </button>
+            <Link href="/cart/check-out">
+              <button className="w-full bg-[#000] text-white py-3 rounded-lg font-semibold hover:bg-[#2c241b] cursor-pointer">
+                PROCEED TO CHECKOUT
+              </button>
+            </Link>
           </div>
         </div>
       </div>
